@@ -13,3 +13,4 @@
  *= require_tree .
  *= require_self
  */
+/* Force footer to the bottom on pages with limited content */
