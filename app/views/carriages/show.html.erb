@@ -7,38 +7,22 @@
 
 <p>
   <strong>Поезд:</strong>
-  <% if @carriage.train %>
-      <%= @carriage.train.number %>
-  <%else%>
-      не назначен
-  <%end%>
+    <%= @carriage.train.number %>
 </p>
 
 <p>
   <strong>Тип вагона:</strong>
-  <% if @carriage.kind %>
       <%= @carriage.kind %>
-  <%else%>
-      не назначен
-  <%end%>
 </p>
 
 <p>
   <strong>Количество верхних мест:</strong>
-  <% if @carriage.top_seats %>
-      <%= @carriage.top_seats %>
-  <%else%>
-      не назначен
-  <%end%>
+    <%= @carriage.top_seats %>
 </p>
 
 <p>
   <strong>Количество нижних мест:</strong>
-  <% if @carriage.bottom_seats %>
-      <%= @carriage.bottom_seats %>
-  <%else%>
-      не назначен
-  <%end%>
+    <%= @carriage.bottom_seats %>
 </p>
 
 <%= link_to 'Edit', edit_carriage_path(@carriage) %> |
