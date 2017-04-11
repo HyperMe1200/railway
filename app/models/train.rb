@@ -5,7 +5,7 @@ class Train < ApplicationRecord
   has_many :carriages
 
   def carriages_count(kind)
-    return carriages.where(kind: kind).size
+    carriages.where(kind: kind).size
   end
 
   def seats_count(kind, seats_kind)
