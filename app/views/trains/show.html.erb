@@ -23,5 +23,31 @@
   <%end%>
 </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<p>
+  <strong>Количество купейных вагонов:</strong>
+  <%= @train.carriages_count 'купейный' %>
+</p>
+
+<p>
+  <strong>Количество плацкартных вагонов:</strong>
+  <%= @train.carriages_count 'плацкартный' %>
+</p>
+
+<p>
+  <strong>Количество мест купейных вагонов:</strong>
+  верхних:
+  <%= @train.seats_count 'купейный', :top %>
+  нижних:
+  <%= @train.seats_count 'купейный', :bottom %>
+</p>
+
+<p>
+  <strong>Количество мест плацкартных вагонов:</strong>
+  верхних:
+    <%= @train.seats_count 'плацкартный', :top %>
+  нижних:
+    <%= @train.seats_count 'плацкартный', :bottom %>
+</p>
+
+<%= link_to 'Изменить', edit_train_path(@train) %> |
+<%= link_to 'Назад', trains_path %>
