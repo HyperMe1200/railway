@@ -5,18 +5,14 @@ class Train < ApplicationRecord
   has_many :carriages
 
   def carriages_count(kind)
-    carriages.where(kind: kind).size
+    carriages.where(type: kind).size
   end
 
   def seats_count(kind, seats_kind)
-    sum = 0
-    carriages.where(kind: kind).each do |carriage|
-      if seats_kind == :top
-        sum += carriage.top_seats
-      elsif seats_kind == :bottom
-        sum += carriage.bottom_seats
-      end
-    end
-    sum
+    carriages.where(type: kind).sum(seats_kind)
+  end
+
+  def ordered_carriages
+    carriages.order(number: head_order ? :asc : :desc)
   end
 end
