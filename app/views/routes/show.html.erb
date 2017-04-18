@@ -30,8 +30,8 @@
       отсутствуют
   <% else %>
     <ul>
-      <% @route.railway_stations.each do |station| %>
-          <li><%= station.name %></li>
+      <% @route.railway_stations_routes.ordered.each do |station| %>
+        <%= "#{station.station_number}. #{station.railway_station.title}" %>
       <% end %>
     </ul>
 <% end %>

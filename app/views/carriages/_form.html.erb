@@ -1,14 +1,9 @@
-<%= form_for(carriage) do |f| %>
+<%= form_for(carriage.becomes(Carriage)) do |f| %>
     <%= render 'common/errors', resource: @carriage %>
 
     <div class="field">
-      <%= f.label :number, 'Номер вагона' %>
-      <%= f.text_field :number %>
-    </div>
-
-    <div class="field">
-      <%= f.label :kind, 'Тип вагона' %>
-      <%= f.collection_select :kind, Carriage::TYPES, :to_s, :to_s %>
+      <%= f.label :type, 'Тип вагона' %>
+      <%= f.collection_select :type, Carriage::TYPES, :first, :last %>
     </div>
 
     <div class="field">
@@ -19,6 +14,21 @@
     <div class="field">
       <%= f.label :bottom_seats, 'Нижних мест' %>
       <%= f.text_field :bottom_seats %>
+    </div>
+
+    <div class="field">
+      <%= f.label :side_top_seats, 'Боковых верхних мест' %>
+      <%= f.text_field :side_top_seats %>
+    </div>
+
+    <div class="field">
+      <%= f.label :side_bottom_seats, 'Боковых нижних мест' %>
+      <%= f.text_field :side_bottom_seats %>
+    </div>
+
+    <div class="field">
+      <%= f.label :sitting_seats, 'Сидячих мест' %>
+      <%= f.text_field :sitting_seats %>
     </div>
 
     <div class="field">
