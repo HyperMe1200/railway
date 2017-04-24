@@ -6,11 +6,10 @@ class Carriage < ApplicationRecord
   before_validation :set_number
 
   TYPES = {
-      EconomyCarriage: 'Плацкартный',
-      CoupeCarriage: 'Купейный',
-      SitCarriage: 'Сидячий',
-      SleepCarriage: 'Спальный'
-  }
+    EconomyCarriage: 'Плацкартный',
+    CoupeCarriage: 'Купейный',
+    SitCarriage: 'Сидячий',
+    SleepCarriage: 'Спальный'}
 
   private
 

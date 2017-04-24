@@ -1,0 +1,46 @@
+<h1>Поиск</h1>
+
+<%= form_tag search_path do %>
+  <div class="field">
+    <%= label :first_station_id, 'Отправление' %>
+    <%= collection_select :stations, :first_station_id, RailwayStation.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= label :last_station_id, 'Прибытие' %>
+    <%= collection_select :stations, :last_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Поиск' %>
+  </div>
+
+  <% if @search %>
+    <table>
+      <thead>
+        <tr>
+          <td><%= 'Поезд' %></td>
+          <td><%= 'Маршрут' %></td>
+          <td><%= 'Время отправления' %></td>
+          <td><%= 'Время прибытия' %></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @search.result.empty? %>
+          <tr>
+            <td>не найдено</td>
+          </tr>
+        <% else %>
+          <% @search.result.each do |train| %>
+              <tr>
+                <td><%= train[:number] %></td>
+                <td><%= train[:route] %></td>
+                <td><%= train[:departure_time] %></td>
+                <td><%= train[:arrival_time] %></td>
+                <td><%= link_to 'Купить', new_ticket_path(train) %></td>
+              </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>

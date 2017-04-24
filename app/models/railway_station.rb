@@ -14,7 +14,16 @@ class RailwayStation < ApplicationRecord
     station_route(route).try(:station_number)
   end
 
-  protected
+  def update_time_in(route, arrival_time, departure_time)
+    station_route = station_route(route)
+    station_route.update(arrival_time: arrival_time, departure_time: departure_time) if station_route
+  end
+
+  def time_in(route, time_kind)
+    station_route(route).try(time_kind)
+  end
+
+  private
 
   def station_route(route)
     @station_route ||= railway_stations_routes.where(route: route).first
