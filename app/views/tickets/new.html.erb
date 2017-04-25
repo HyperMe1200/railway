@@ -2,7 +2,7 @@
 
 <%= form_for (@ticket) do |f| %>
     <%= render 'common/errors', resource: @ticket %>
-    <%= f.hidden_field :train_id, value: params[:id] %>
+    <%= f.hidden_field :train_id, value: params[:train_id] %>
     <%= f.hidden_field :first_station_id, value: params[:first_station_id] %>
     <%= f.hidden_field :last_station_id, value: params[:last_station_id] %>
 
