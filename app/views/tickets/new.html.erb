@@ -1,0 +1,24 @@
+<h1>Покупка билетов</h1>
+
+<%= form_for (@ticket) do |f| %>
+    <%= render 'common/errors', resource: @ticket %>
+    <%= f.hidden_field :train_id, value: params[:train_id] %>
+    <%= f.hidden_field :first_station_id, value: params[:first_station_id] %>
+    <%= f.hidden_field :last_station_id, value: params[:last_station_id] %>
+
+    <div class="field">
+      <%= f.label :user_name, 'ФИО' %>
+      <%= f.text_field :user_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :user_passport, 'Паспортные данные' %>
+      <%= f.text_field :user_passport %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Купить' %>
+    </div>
+<% end %>
+
+<%= link_to 'Назад', search_path %>

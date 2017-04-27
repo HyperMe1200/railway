@@ -1,5 +1,6 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_station_number, :update_time]
+  before_action :set_route, only: [:update_station_number, :update_time]
 
   def index
     @railway_stations = RailwayStation.all
@@ -37,12 +38,27 @@ class RailwayStationsController < ApplicationController
     redirect_to railway_stations_url, notice: 'Станция удалена.'
   end
 
-  private
-    def set_railway_station
-      @railway_station = RailwayStation.find(params[:id])
-    end
+  def update_station_number
+    @railway_station.update_station_number(@route, params[:station_number])
+    redirect_to @route
+  end
 
-    def railway_station_params
-      params.require(:railway_station).permit(:title)
-    end
+  def update_time
+    @railway_station.update_time_in(@route, params[:arrival_time], params[:departure_time])
+    redirect_to @route
+  end
+
+  private
+
+  def set_railway_station
+    @railway_station = RailwayStation.find(params[:id])
+  end
+
+  def set_route
+    @route ||= Route.find(params[:route_id])
+  end
+
+  def railway_station_params
+    params.require(:railway_station).permit(:title)
+  end
 end

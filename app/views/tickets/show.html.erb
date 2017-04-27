@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Поезд:</strong>
+  <%= @ticket.train.number %>
+</p>
+<p>
+  <strong>ФИО пассажира:</strong>
+  <%= @ticket.user_name %>
+</p>
+<p>
+  <strong>Паспортные данные:</strong>
+  <%= @ticket.user_passport %>
+</p>
+<p>
+  <strong>Начальня станция:</strong>
+  <%= @ticket.first_station.title %>
+</p>
+<p>
+  <strong>Начальня станция:</strong>
+  <%= @ticket.last_station.title %>
+</p>
+
+<%= link_to 'Поиск', search_path %>

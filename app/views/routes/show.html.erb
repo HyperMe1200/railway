@@ -29,15 +29,38 @@
   <% if @route.railway_stations.empty? %>
       отсутствуют
   <% else %>
-    <ul>
-      <% @route.railway_stations_routes.ordered.each do |station| %>
-        <%= "#{station.station_number}. #{station.railway_station.title}" %>
-      <% end %>
-    </ul>
-<% end %>
+    <table>
+      <thead>
+        <tr>
+          <td width="100px">Название</td>
+          <td>Позиция</td>
+          <td>Время прибытия</td>
+          <td>Время отправления</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @route.railway_stations.ordered.each do |station| %>
+          <tr>
+            <td><%= station.title %></td>
+            <td>
+              <%= form_tag update_station_number_railway_station_path(station), method: :patch do %>
+                <%= number_field_tag :station_number, station.station_number_in(@route) %>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <%= submit_tag "Изменить" %>
+              <% end %>
+            </td>
+              <%= form_tag update_time_railway_station_path(station), method: :patch do %>
+                <td><%= datetime_field_tag :arrival_time, station.time_in(@route, :arrival_time) %></td>
+                <td><%= datetime_field_tag :departure_time, station.time_in(@route, :departure_time) %></td>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <td> <%= submit_tag "Изменить" %></td>
+              <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </p>
-
-
 
 <%= link_to 'Изменить', edit_route_path(@route) %> |
 <%= link_to 'Назад', routes_path %>
