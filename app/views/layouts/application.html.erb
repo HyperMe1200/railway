@@ -9,7 +9,18 @@
   </head>
 
   <body>
+    <p id="notice" class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <p><%= link_to "Выйти", destroy_user_session_path, method: :delete %></p>
+      <p>Привет <%= current_user.name %>!</p>
+    <% else %>
+      <%= link_to "Войти", new_user_session_path %>
+    <% end %>
+
     <%= yield %>
+
     <footer>
       (с) 2017 Андрей Придатченко. Учебный проект в
       <%= link_to 'онлайн-школе Thinknetica.', "http://www.thinknetica.com" %>

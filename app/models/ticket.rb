@@ -6,17 +6,17 @@ class Ticket < ApplicationRecord
 
   validates :user_passport, :user_name, presence: true
 
-  after_validation :set_user
+  #after_validation :set_user
 
-  private
+  #private
 
-  def set_user
-    user = User.where(name: user_name).first
-    self.user =
-      if user
-        user
-      else
-        User.create(name: user_name)
-      end
-  end
+  # def set_user
+  #   user = User.where(name: user_name).first
+  #   self.user =
+  #     if user
+  #       user
+  #     else
+  #       User.create(name: user_name)
+  #     end
+  # end
 end

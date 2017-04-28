@@ -1,0 +1,19 @@
+<p>
+  <strong>Номер:</strong>
+  <%= @carriage.number %>
+</p>
+
+<p>
+  <strong>Поезд:</strong>
+    <%= @carriage.train.number %>
+</p>
+
+<p>
+  <strong>Тип вагона:</strong>
+      <%= Carriage::TYPES[@carriage.type.to_sym] %>
+</p>
+
+<%= render @carriage.type.underscore, carriage: @carriage %>
+
+<%= link_to 'Изменить', edit_admin_carriage_path(@carriage) %> |
+<%= link_to 'Назад', admin_train_path(@carriage.train) %>
