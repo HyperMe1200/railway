@@ -1,0 +1,26 @@
+<p>
+  <strong>Адрес пользователя:</strong>
+  <%= @ticket.user.email %>
+</p>
+<p>
+  <strong>ФИО пассажира:</strong>
+  <%= @ticket.user_name %>
+</p>
+<p>
+  <strong>Паспортные данные:</strong>
+  <%= @ticket.user_passport %>
+</p>
+<p>
+  <strong>Поезд:</strong>
+  <%= @ticket.train.number %>
+</p>
+<p>
+  <strong>Начальная станция:</strong>
+  <%= @ticket.first_station.title %>
+</p>
+<p>
+  <strong>Конечная станция:</strong>
+  <%= @ticket.last_station.title %>
+</p>
+
+<%= link_to 'Список билетов', admin_tickets_path %>

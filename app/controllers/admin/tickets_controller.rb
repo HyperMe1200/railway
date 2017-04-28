@@ -6,6 +6,7 @@ class Admin::TicketsController < Admin::BaseController
   end
 
   def new
+    @ticket = Ticket.new
   end
 
   def show
@@ -15,7 +16,7 @@ class Admin::TicketsController < Admin::BaseController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to @ticket
+      redirect_to [:admin, @ticket]
     else
       render :new
     end
@@ -34,13 +35,13 @@ class Admin::TicketsController < Admin::BaseController
 
   def destroy
     @ticket.destroy
-    redirect_to tickets_path
+    redirect_to admin_tickets_path
   end
 
   private
 
   def ticket_params
-    params.require(:ticket).permit(:train_id, :start_station_id, :end_station_id, :passenger_name, :passenger_number, :user_id)
+    params.require(:ticket).permit(:train_id, :first_station_id, :last_station_id, :user_name, :user_passport, :user_id)
   end
 
   def set_ticket

@@ -1,0 +1,37 @@
+<h1>Все билеты:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td><%= 'Email пользователя'%></td>
+      <td><%= 'ФИО'%></td>
+      <td><%= 'Паспортные данные'%></td>
+      <td><%= 'Поезд' %></td>
+      <td><%= 'Маршрут' %></td>
+      <td><%= 'Время отправления' %></td>
+      <td><%= 'Время прибытия' %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @tickets.empty? %>
+      <tr>
+        <td>нема билетов</td>
+      </tr>
+    <% else %>
+      <% @tickets.each do |ticket| %>
+          <tr>
+            <td><%= ticket.user.email %></td>
+            <td><%= ticket.user_name %></td>
+            <td><%= ticket.user_passport %></td>
+            <td><%= ticket.train.number %></td>
+            <td><%= ticket.train.route.name %></td>
+            <td><%= ticket.first_station.time_in(ticket.train.route, :departure_time) %></td>
+            <td><%= ticket.last_station.time_in(ticket.train.route, :arrival_time) %></td>
+            <td><%= link_to "Удалить", admin_ticket_path(ticket), method: :delete, data: { confirm: 'Уверен?' } %></td>
+          </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Новый билет', new_admin_ticket_path %>
