@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       redirect_to @ticket
     else
-      redirect_to search_path
+      render 'new'
     end
   end
 
