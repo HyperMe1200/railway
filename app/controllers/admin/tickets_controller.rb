@@ -27,7 +27,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def update
     if @ticket.update(ticket_params)
-      redirect_to admin_ticket_path(@ticket)
+      redirect_to [:admin, @ticket]
     else
       render :new
     end
@@ -40,11 +40,13 @@ class Admin::TicketsController < Admin::BaseController
 
   private
 
-  def ticket_params
-    params.require(:ticket).permit(:train_id, :first_station_id, :last_station_id, :user_name, :user_passport, :user_id)
-  end
-
   def set_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def ticket_params
+    params.require(:ticket).permit(:train_id, :first_station_id,
+                                   :last_station_id, :user_name,
+                                   :user_passport, :user_id)
   end
 end
