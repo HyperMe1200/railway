@@ -1,10 +1,8 @@
-<h1>Маршруты</h1>
+<h1><%= t('.title') %></h1>
 
 <table>
   <thead>
   <tr>
-    <th>Название</th>
-    <th colspan="3"></th>
   </tr>
   </thead>
 
@@ -15,4 +13,4 @@
 
 <br>
 
-<%= link_to 'Новый маршрут', new_admin_route_path %>
+<%= link_to t('admin.routes.new.title'), new_admin_route_path %>
