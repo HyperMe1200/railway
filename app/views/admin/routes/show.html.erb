@@ -44,14 +44,14 @@
               <%= form_tag update_station_number_admin_railway_station_path(station), method: :patch do %>
                 <%= number_field_tag :station_number, station.station_number_in(@route) %>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag "Изменить" %>
+                <%= submit_tag t('common.edit') %>
               <% end %>
             </td>
               <%= form_tag update_time_admin_railway_station_path(station), method: :patch do %>
                 <td><%= datetime_field_tag :arrival_time, station.time_in(@route, :arrival_time) %></td>
                 <td><%= datetime_field_tag :departure_time, station.time_in(@route, :departure_time) %></td>
                 <%= hidden_field_tag :route_id, @route.id %>
-                <td> <%= submit_tag "Изменить" %></td>
+                <td> <%= submit_tag t('common.edit') %></td>
               <% end %>
           </tr>
         <% end %>
@@ -60,5 +60,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Изменить', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>

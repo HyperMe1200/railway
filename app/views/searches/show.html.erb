@@ -1,21 +1,21 @@
 <h1>Поиск</h1>
 
 <%= form_tag search_path do %>
-    <div class="field">
-      <%= label :first_station_id, 'Отправление' %>
-      <%= collection_select :stations, :first_station_id, RailwayStation.all, :id, :title %>
+    <div class="col-md-5">
+      <%= label :first_station_id, 'Отправление:' %>
+      <%= select_tag :first_station_id, options_from_collection_for_select(@railway_stations, :id, :title), class: 'form-control' %>
     </div>
-    <div class="field">
-      <%= label :last_station_id, 'Прибытие' %>
-      <%= collection_select :stations, :last_station_id, RailwayStation.all, :id, :title %>
+    <div class="col-md-5">
+      <%= label :last_station_id, 'Прибытие:', class: 'label-default' %>
+      <%= select_tag :last_station_id, options_from_collection_for_select(@railway_stations, :id, :title), class: 'form-control'  %>
     </div>
-
-    <div class="actions">
-      <%= submit_tag 'Поиск' %>
+    <div class="col-md-2">
+      <%= submit_tag 'Поиск', class: 'btn btn-primary' %>
     </div>
 
     <% if @search %>
-        <table>
+      <div class="col-md-12">
+        <table class="table table">
           <thead>
           <tr>
             <td><%= 'Поезд' %></td>
@@ -45,5 +45,6 @@
           <% end %>
           </tbody>
         </table>
+      </div>
     <% end %>
 <% end %>

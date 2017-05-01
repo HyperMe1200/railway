@@ -1,5 +1,8 @@
 class SearchesController < ApplicationController
-  def show; end
+  before_action :railway_stations
+
+  def show
+  end
 
   def create
     @search = Search.new(search_params)
@@ -11,7 +14,11 @@ class SearchesController < ApplicationController
 
   private
 
+  def railway_stations
+    @railway_stations = RailwayStation.all
+  end
+
   def search_params
-    params.require(:stations).permit(:first_station_id, :last_station_id)
+    params.permit(:first_station_id, :last_station_id)
   end
 end
