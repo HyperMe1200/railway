@@ -6,7 +6,7 @@
       <%= select_tag :first_station_id, options_from_collection_for_select(@railway_stations, :id, :title), class: 'form-control' %>
     </div>
     <div class="col-md-5">
-      <%= label :last_station_id, 'Прибытие:', class: 'label-default' %>
+      <%= label :last_station_id, 'Прибытие:' %>
       <%= select_tag :last_station_id, options_from_collection_for_select(@railway_stations, :id, :title), class: 'form-control'  %>
     </div>
     <div class="col-md-2">
