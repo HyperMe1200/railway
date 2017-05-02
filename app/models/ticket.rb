@@ -5,4 +5,17 @@ class Ticket < ApplicationRecord
   belongs_to :last_station, class_name: 'RailwayStation', foreign_key: :last_station_id
 
   validates :user_passport, :user_name, presence: true
+
+  after_create :send_buy_email
+  after_destroy :send_delete_email
+
+  private
+
+  def send_buy_email
+    TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def send_delete_email
+    TicketsMailer.delete_ticket(self.user, self).deliver_now
+  end
 end
