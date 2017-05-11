@@ -6,27 +6,27 @@
       <%= f.collection_select :type, Carriage::TYPES, :first, :last %>
     </div>
 
-    <div class="field">
+    <div class="field coupe economy">
       <%= f.label :top_seats, 'Верхних мест' %>
       <%= f.text_field :top_seats %>
     </div>
 
-    <div class="field">
+    <div class="field coupe economy sleep">
       <%= f.label :bottom_seats, 'Нижних мест' %>
       <%= f.text_field :bottom_seats %>
     </div>
 
-    <div class="field">
+    <div class="field economy">
       <%= f.label :side_top_seats, 'Боковых верхних мест' %>
       <%= f.text_field :side_top_seats %>
     </div>
 
-    <div class="field">
+    <div class="field economy">
       <%= f.label :side_bottom_seats, 'Боковых нижних мест' %>
       <%= f.text_field :side_bottom_seats %>
     </div>
 
-    <div class="field">
+    <div class="field sit">
       <%= f.label :sitting_seats, 'Сидячих мест' %>
       <%= f.text_field :sitting_seats %>
     </div>
